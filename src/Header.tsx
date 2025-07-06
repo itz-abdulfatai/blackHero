@@ -1,4 +1,4 @@
-import React from "react";
+import logo from "./assets/logo.png";
 
 const navLinks = [
   { name: "Features", href: "#features" },
@@ -9,25 +9,27 @@ const navLinks = [
 
 export default function Header() {
   return (
-    <header className="w-full bg-primary text-text sticky top-0 z-50">
+    <header className="w-full bg-primary text-text sticky top-0 z-50  px-4 sm:px-6 lg:px-8">
       <nav className="max-w-7xl mx-auto flex items-center justify-between h-16 px-4">
         {/* Logo */}
-        <div className="flex items-center gap-2">
-          <span className="text-2xl font-bold">~</span>
+        <div className="flex gap-14 items-center">
+          <div className="flex items-center gap-2">
+            <img src={logo} alt="~" className="h-6 object-cover" />
+          </div>
+          {/* Nav Links */}
+          <ul className="hidden md:flex gap-8 text-sm font-medium">
+            {navLinks.map((link) => (
+              <li key={link.name}>
+                <a
+                  href={link.href}
+                  className="hover:text-gray-400 transition-colors duration-150"
+                >
+                  {link.name}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
-        {/* Nav Links */}
-        <ul className="hidden md:flex gap-8 text-sm font-medium">
-          {navLinks.map((link) => (
-            <li key={link.name}>
-              <a
-                href={link.href}
-                className="hover:text-gray-400 transition-colors duration-150"
-              >
-                {link.name}
-              </a>
-            </li>
-          ))}
-        </ul>
         {/* Actions */}
         <div className="flex items-center gap-2">
           <button className="px-4 py-1 rounded-md border border-gray-700 bg-transparent text-text hover:bg-gray-800 transition-colors duration-150">

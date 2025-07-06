@@ -21,4 +21,5 @@ body {
   background-color: var(--color-body);
   color: var(--color-text);
   font-family: 'Fustat', sans-serif;
+  @apply max-w-[1440px] mx-auto;
 }
