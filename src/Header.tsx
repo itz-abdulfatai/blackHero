@@ -14,7 +14,11 @@ export default function Header() {
         {/* Logo */}
         <div className="flex gap-14 items-center">
           <div className="flex items-center gap-2">
-            <img src={logo} alt="~" className="h-6 object-cover" />
+            <img
+              src={logo}
+              alt="~"
+              className="h-6 object-cover relative -top-0.5"
+            />
           </div>
           {/* Nav Links */}
           <ul className="hidden md:flex gap-8 text-sm font-medium">
@@ -32,10 +36,10 @@ export default function Header() {
         </div>
         {/* Actions */}
         <div className="flex items-center gap-2">
-          <button className="px-4 py-1 rounded-md border border-gray-700 bg-transparent text-text hover:bg-gray-800 transition-colors duration-150">
+          <button className="px-4 py-1 rounded-md border border-gray-700 bg-transparent text-text hover:bg-gray-800 transition-colors duration-150 text-sm">
             Login
           </button>
-          <button className="px-4 py-1 rounded-md bg-gray-100 text-black font-semibold hover:bg-gray-200 transition-colors duration-150">
+          <button className="px-4 py-1 rounded-md bg-gray-100 text-black font-semibold hover:bg-transparent hover:text-white transition-colors duration-150 text-sm">
             Sign Up
           </button>
           <button
