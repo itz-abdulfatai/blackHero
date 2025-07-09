@@ -1,14 +1,16 @@
 import React from "react";
-import type { TypeType } from "./hero";
+// import type { TypeType } from "./hero";
 
 interface PopupProps {
   show: boolean;
-  onClose: () => void;
-  quote: string;
-  setQuote: (q: string) => void;
-  type: string;
-  setType: (t: TypeType) => void;
-  onApply: () => void;
+  onClose?: () => void;
+  // quote?: string;
+  // setQuote?: (q: string) => void;
+  // type?: string;
+  // setType?: (t: TypeType) => void;
+  onApply?: () => void;
+  quoteRef?: React.RefObject<HTMLInputElement | null> | undefined;
+  typeRef?: React.Ref<HTMLSelectElement> | undefined;
 }
 
 const TYPE_OPTIONS = [
@@ -17,15 +19,7 @@ const TYPE_OPTIONS = [
   { label: "None", value: "none" },
 ];
 
-const Popup: React.FC<PopupProps> = ({
-  show,
-  onClose,
-  quote,
-  setQuote,
-  type,
-  setType,
-  onApply,
-}) => {
+const Popup: React.FC<PopupProps> = ({ show, onClose, onApply, quoteRef, typeRef }) => {
   if (!show) return null;
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
@@ -42,8 +36,7 @@ const Popup: React.FC<PopupProps> = ({
           <label className="block mb-1 font-medium">Quote</label>
           <input
             className="w-full rounded border border-gray-700 bg-black text-white p-2"
-            value={quote}
-            onChange={(e) => setQuote(e.target.value)}
+            ref={quoteRef}
             placeholder="Enter your quote..."
           />
         </div>
@@ -51,8 +44,7 @@ const Popup: React.FC<PopupProps> = ({
           <label className="block mb-1 font-medium">Type</label>
           <select
             className="w-full rounded border border-gray-700 bg-black text-white p-2"
-            value={type}
-            onChange={(e) => setType(e.target.value as TypeType)}
+            ref={typeRef}
           >
             {TYPE_OPTIONS.map((t) => (
               <option key={t.value} value={t.value}>

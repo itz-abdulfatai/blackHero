@@ -5,12 +5,17 @@ import SplashCursor from "./react-bitz/splash";
 import TrueFocus from "./react-bitz/TrueFocus";
 import { useEffect, useState } from "react";
 
-function Hero({ quote, type = "true-focus", enableSplash = false }: PupopType) {
+function Hero({
+  quote,
+  type = "true-focus",
+  enableSplash = false,
+  showPopup,
+}: PupopType) {
   const [enableSplashWithKey, setEnableSplashWithKey] = useState(enableSplash);
   // enable splash when i click space bar
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.code === "Space") {
+      if (event.code === "Space" && !showPopup) {
         // Trigger splash effect
         setEnableSplashWithKey((prev) => !prev);
       }
@@ -19,7 +24,7 @@ function Hero({ quote, type = "true-focus", enableSplash = false }: PupopType) {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [showPopup]);
   return (
     <section
       id="hero"
@@ -30,7 +35,7 @@ function Hero({ quote, type = "true-focus", enableSplash = false }: PupopType) {
           sentence={quote}
           manualMode={true}
           borderColor="#dcf763"
-          blurAmount={4}
+          blurAmount={3}
           pauseBetweenAnimations={0}
         />
       )}
@@ -61,6 +66,7 @@ export type PupopType = {
   enableRibbons?: boolean;
   enableSplash?: boolean;
   type?: TypeType;
+  showPopup?: boolean;
 };
 
 export type TypeType = "none" | "true-focus" | "scramble";

@@ -25,6 +25,6 @@ body {
   @apply max-w-[1440px] mx-auto;
 }
 
-button:hover, a:hover {
+button:hover, a:hover, #hero *:hover, #hero:hover {
   cursor: url('./assets/favicon.png'), pointer;
 }

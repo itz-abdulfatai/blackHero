@@ -97,7 +97,7 @@ export default function Header() {
       </nav>
       {/* Mobile Nav */}
       {menuOpen && (
-        <div className="md:hidden bg-primary border-t border-gray-800 px-4 pb-4 absolute top-16 left-0 w-full">
+        <div className="md:hidden bg-black border-t border-gray-800 px-4 pb-4 absolute top-16 left-0 w-full">
           <ul className="flex flex-col gap-4 mt-4">
             {navLinks.map((link) => (
               <li key={link.name}>
